@@ -9,9 +9,11 @@ Sai.on("jserror", function(err){
   var action = err.message;
   var label = err.file + "#L" + err.line;
 
-  if (win._czc && typeof win._czc.push === "function"){
+  var _czc = win._czc;
 
-    win._czc.push(['_trackEvent', category, action, label]);
+  if (_czc && typeof _czc.push === "function"){
+
+    _czc.push(['_trackEvent', category, action, label]);
     catched = true;
 
   }
